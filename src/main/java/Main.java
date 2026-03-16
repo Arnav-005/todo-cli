@@ -4,6 +4,8 @@ public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         TaskManager tasks = new TaskManager();
+        //load from file on boot
+        tasks.loadFromFile("tasks.txt");
 
         System.out.println("Initialising...");
         System.out.println("Todo App. Commands: add, list, done, delete, quit");
@@ -19,12 +21,14 @@ public class Main {
             switch (command) {
                 case "quit":
                     //exception: checking for quit command
+                    //save data to file before quitting
+                    tasks.saveToFile("tasks.txt");
                     System.out.print("Bye.");
                     return;
 
                 //else map the commands to respective functions
                 case "add":
-                    //check if argument is give
+                    //check if argument is given
                     if(parts.length < 2 || parts[1].isBlank()){
                         System.out.println("please add <title>.");
                         break;

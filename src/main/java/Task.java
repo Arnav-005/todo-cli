@@ -23,7 +23,7 @@ public class Task {
     public void setTitle(String text){
         title = text;
     }
-    public void setDone(){
-        status = true;
+    public void setDone(Boolean value){
+        status = value;
     }
 }
